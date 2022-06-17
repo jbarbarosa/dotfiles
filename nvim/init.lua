@@ -20,5 +20,15 @@ Plug 'neovim/nvim-lspconfig'
 
 vim.call('plug#end')
 
+vim.cmd("colorscheme gruvbox")
+
 require("nvim-lsp-installer").setup {}
 require("telescope").setup {}
+require('lspconfig')['solargraph'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
+require('lspconfig')['tsserver'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
