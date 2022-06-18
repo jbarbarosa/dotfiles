@@ -18,6 +18,8 @@ Plug 'williamboman/nvim-lsp-installer'
 
 Plug 'neovim/nvim-lspconfig'
 
+Plug 'folke/lsp-colors.nvim'
+
 vim.call('plug#end')
 
 vim.cmd("colorscheme gruvbox")
@@ -33,5 +35,11 @@ require('lspconfig')['tsserver'].setup{
     flags = lsp_flags,
 }
 
+require("lsp-colors").setup({
+  Error = "#db4b4b",
+  Warning = "#e0af68",
+  Information = "#0db9d7",
+  Hint = "#10B981"
+})
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
 vim.cmd("nnoremap gt :Telescope find_files<CR>")
