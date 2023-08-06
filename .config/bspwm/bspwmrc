@@ -1,0 +1,23 @@
+#! /bin/sh
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+bspc monitor -d I II III IV V VI VII VIII IX X
+
+bspc config border_width         2
+bspc config window_gap          12
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Chromium desktop='^2'
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+
+setxkbmap -model pc105 -layout br -variant abnt2
+feh --bg-fill /mnt/Pictures/Peter_Paul_Rubens_-_The_Fall_of_Phaeton.jpg
+
+killall -q polybar
+polybar example 2>&1 | tee -a /tmp/polybar.log & disown
